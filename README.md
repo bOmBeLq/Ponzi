@@ -5,7 +5,7 @@ I take no responsibility for any money loss caused by this script.
 If You want to run this script but it does not work You can submit an issue ticket.
 I may help u but remember that You need some technical knowledge to run this.
 
-1) Installing
+1) Installation
 ----------------------------------
 - setup mysql DB
 - setup bitcoind (or other daemon) client
