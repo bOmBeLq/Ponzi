@@ -1,0 +1,16 @@
+<h2>Info</h2>
+<label for="deposit-address">Deposit address</label>
+<span class="input">
+{{ account.depositAddress }}
+</span>
+<label for="withdraw-address">Payout address</label>
+<span class="input">
+{{ account.withdrawAddress }}
+</span>
+
+<label for="reflink">Referrer link</label>
+<span class="input">
+{{ url('index', {'ref': account.id }) }}
+</span>
+
+<a href="{{ path('reset') }}" class="aside">change payout/deposit address</a>

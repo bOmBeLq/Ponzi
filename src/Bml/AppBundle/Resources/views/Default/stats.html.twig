@@ -1,0 +1,138 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    {#
+    <div class="info stats">
+        <h2>Filter transactions</h2>
+        Deposit address:
+        <input type="text" style="margin-right: 40px"/>
+
+        Status:
+        <select>
+            <option value="unconfirmed">all</option>
+            <option value="unconfirmed">Unconfirmed</option>
+            <option value="unconfirmed">Confirmed</option>
+            <option value="unconfirmed">Paid</option>
+        </select>
+    </div>
+    #}
+    {% include 'AppBundle:Default:changes.html.twig' %}
+    <div class="info stats">
+        <h2>You don't believe?</h2>
+        See "<b>bitcoind listtransactions %wallet_account% 9999999</b>" raw result on address:
+        <a href="{{ path('wallet_transactions', {round: round.id}) }}">{{ url('wallet_transactions', {round: round.id}) }}</a>
+        <br>
+        Where {{ round.id }} is round number.
+        All deposit addresses are generated on one wallet account per round.
+
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>time</th>
+            <th>type</th>
+            <th>deposit</th>
+            <th>deposit tx</th>
+            <th>confirmations</th>
+            <th>status</th>
+            <th>payout</th>
+            <th>payout tx</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for payout in payouts %}
+            <tr>
+                <td>{{ payout.id }}</td>
+                <td>{{ payout.createdAt | timeAgo }} ago</td>
+                <td>
+                    {{ payout.type | capitalize }} -
+                    {% if payout.defaultPayout %}
+                        {{ round.payoutPercent }}%
+                    {% elseif payout.referrerPayout %}
+                        {{ round.referrerPayoutPercent }}%
+                    {% elseif payout.lastAdminPayout %}
+                        {{ round.adminLastPayoutPercent }}%
+                    {% elseif payout.lastPayout %}
+                        {{ round.lastPayoutPercent }}%
+                    {% elseif payout.remainingFundsReturn %}
+                        {{ round.roundEndRemainingReturnPercent }}%
+                    {% endif %}
+                </td>
+                <td>
+                    {% if payout.deposit %}
+                        {{ payout.deposit.amount | currency }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td>
+                    {% if payout.deposit %}
+                        <a href="{{ blockchain_tx_link }}{{ payout.deposit.txIn }}">{{ payout.deposit.txIn | shortize }}</a>
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td>
+                    {% if payout.deposit %}
+                        {{ payout.deposit.confirmations }}/{{ round.minConfirmations }}
+                    {% else %}
+                       -
+                    {% endif %}
+                </td>
+                <td>
+                    {% if payout.partiallyPaid %}
+                        Partially paid / Insufficient funds
+                    {% elseif payout.paid %}
+                        Paid
+                    {% elseif payout.readyForPayout %}
+                        Confirmed / Insufficient funds
+                    {% else %}
+                        Unconfirmed
+                    {% endif %}
+                </td>
+                <td>
+                    {{ payout.amount | currency }}
+                </td>
+                <td>
+                    {% if payout.paid and not payout.lastAdminPayout %}
+                        <a href="{{ blockchain_tx_link }}{{ payout.tx.txOut }}">{{ payout.tx.txOut | shortize }}</a>
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                {#
+                <td style="font-size: 20px">
+                    <a href="#" id="show_details_{{ payout.id }}" class="show-details" data-id="{{ payout.id }}">
+                        &or;&or;&or;
+                    </a>
+                    <a style="display: none" href="#" id="hide_details_{{ payout.id }}" class="hide-details"
+                       data-id="{{ payout.id }}">
+                        &and;&and;&and;
+                    </a>
+                    <a href="{{ path('payout-details', {id: payout.id, round: round.id}) }}"
+                       data-id="{{ payout.id }}">
+                        &raquo;&raquo;&raquo;
+                    </a>
+                </td>
+                #}
+            </tr>
+            {#
+            <tr>
+                <td style="display: none" colspan="9" class="details" id="details_{{ payout.id }}">
+                    <div>
+                        <span class="cool">payout address:</span> {{ payout.account.depositAddress }}
+                    </div>
+                    <div>
+                        <span class="cool">Payout address:</span> {{ payout.account.withdrawAddress }}
+                    </div>
+                    <div>
+                        <span class="cool">Referred:</span> {{ payout.account.referrer ? 'Yes' : 'No' }}
+                    </div>
+                </td>
+            </tr>
+            #}
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

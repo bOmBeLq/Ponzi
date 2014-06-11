@@ -1,0 +1,6 @@
+status_1: Unconfirmed
+status_2: Confirmed
+status_3: Paid
+status_4: Partialy paid
+status_5: Ready for payout
+status_5_more: Payout will be realised when wallet is unlocked. This is for better security.

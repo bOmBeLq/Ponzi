@@ -1,0 +1,10 @@
+services:
+  bml.stats.doctrine_event_listener:
+    class: Bml\AppBundle\Doctrine\EventListeners\StatsListener
+    tags:
+      - {name: doctrine.event_listener, event: onFlush}
+
+  bml.round.doctrine_event_listener:
+    class: Bml\AppBundle\Doctrine\EventListeners\RoundListener
+    tags:
+      - {name: doctrine.event_listener, event: onFlush}

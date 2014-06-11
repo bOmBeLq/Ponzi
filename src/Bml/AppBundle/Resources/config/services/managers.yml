@@ -1,0 +1,35 @@
+services:
+  bml.deposit.manager:
+    class: Bml\AppBundle\Manager\DepositManager
+    arguments:
+    - @bml.wallet.manager
+    - @bml.account.repo
+    - @bml.round.repo
+    - @bml.deposit.repo
+    - @bml.payout.manager
+    - @doctrine.orm.entity_manager
+
+  bml.payout.manager:
+    class: Bml\AppBundle\Manager\PayoutManager
+    arguments:
+      - @bml.wallet.manager
+      - @doctrine.orm.entity_manager
+      - @bml.payout.repo
+      - @bml.round.repo
+      - @bml.deposit.repo
+
+  bml.wallet.manager:
+    class: Bml\AppBundle\Manager\WalletManager
+    arguments:
+      - @bml_coin.manager.container
+      - @doctrine.orm.entity_manager
+      - @bml.deposit.repo
+      - @bml.round.repo
+      - %wallet_account_prefix%
+
+  bml.round.manager:
+    class: Bml\AppBundle\Manager\RoundManager
+    arguments:
+      - @doctrine.orm.entity_manager
+      - @bml.round.repo
+      - %wallet_account_prefix%

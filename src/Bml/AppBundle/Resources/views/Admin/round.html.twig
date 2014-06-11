@@ -1,0 +1,24 @@
+{% extends '::base_admin.html.twig' %}
+{% block body %}
+    <div class="info">
+        <h2>Round {{ roundId }} settings</h2>
+
+        <form method="post" action="{{ path('admin_round', {round: roundId}) }}" class="admin_form">
+            <div class="form_row">
+                <label>Status</label>
+                {% if round.finished %}
+                    Finished
+                {% elseif round.started %}
+                    Started
+                {% else %}
+                    Not started
+                {% endif %}
+            </div>
+            {{ form_widget(form) }}
+            <div class="form_row">
+                <label></label>
+                <input type="submit" value="Save" />
+            </div>
+        </form>
+    </div>
+{% endblock %}

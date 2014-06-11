@@ -1,0 +1,28 @@
+{% extends '::base_admin.html.twig' %}
+{% block body %}
+    <div class="info">
+        <h2>Actions</h2>
+        <ul>
+            {% if currentRound %}
+                <li>
+                    <a href="{{ path('admin_round', {round: currentRound.id}) }}">Current round settings (round {{ currentRound.id }})</a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_round', {round: currentRound.id+1}) }}">Next round settings (round {{ currentRound.id+1 }})</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="info">
+        <h2>Info</h2>
+        <div>
+            <label>Current round number: </label>
+            {{ currentRound.id }}
+        </div>
+        <div>
+            <label>Wallet status: </label>
+            {{ walletStatus }}
+        </div>
+
+    </div>
+{% endblock %}

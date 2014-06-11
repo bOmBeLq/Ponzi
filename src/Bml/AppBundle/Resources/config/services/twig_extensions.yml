@@ -1,0 +1,15 @@
+services:
+  bml.twig.currency_extension:
+    class: Bml\AppBundle\Twig\CurrencyExtension
+    tags:
+        - { name: twig.extension }
+
+  bml.twig.time_ago_extension:
+    class: Bml\AppBundle\Twig\TimeAgoExtension
+    tags:
+        - { name: twig.extension }
+
+  bml.twig.shortize_extension:
+    class: Bml\AppBundle\Twig\ShortizeExtension
+    tags:
+        - { name: twig.extension }

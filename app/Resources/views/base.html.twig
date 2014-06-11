@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Ponzi {{ currency }}{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    {# <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" /> #}
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/js.js"></script>
+</head>
+<body>
+<div id="logo-container" style="background: url('/css/img/{{ currency_short }}_bg.png') no-repeat;">
+    <div class="center">
+        {% block top_aside %}
+            {#
+            @todo move links to database and create admin panel for it
+            <aside id="links">
+                <a href="http://btc.fairponzi.com">
+                    <img src="/css/img/btc.png" alt="BTC"
+                         onmouseover="this.src = '/css/img/btc_h.png'"
+                         onmouseout="this.src = '/css/img/btc.png'"
+                            />
+                    <img src="/css/img/btc_h.png" alt="BTC" style="display: none"/>
+                </a>
+                <a href="http://fck.fairponzi.com">
+                    <img src="/css/img/fck.png"
+                         onmouseover="this.src = '/css/img/fck_h.png'"
+                         onmouseout="this.src = '/css/img/fck.png'"
+                         alt="FCK"
+                            />
+                </a>
+            </aside>
+            #}
+            <aside id="contact">
+                <span>contact</span>
+                <br>
+                <span class="cool" title="sorry for the hard to read email this is to prevent spam bots">bombelmam [_at_] gmail[dot]com</span>
+            </aside>
+        {% endblock %}
+        <h1>
+            {% block title2 %}<a href="{{ path('index') }}">{{ currency }} Ponzi </a>{% endblock %}
+        </h1>
+
+        {% block info %}
+            <div class="center2">
+            <span class="tip1">
+                Deposit {{ round.minDeposit | currency(true) }} - {{ round.maxDeposit | currency(true) }} {{ currency_short|upper }}
+            </span>
+                <img src="/css/img/arrow.png" alt=">" class="arrow">
+                <span class="tip2">
+                    Wait...
+                </span>
+                <br/>
+                <img src="/css/img/arrow.png" alt=">" class="arrow">
+            <span class="tip3">
+                Receive back {{ round.payoutPercent }}% of Your deposit!
+            </span>
+            </div>
+
+            <div class="info half1 {% if account is defined %}logged{% endif %}">
+                {% if not stats.roundFinished %}
+                    {% if account is not defined %}
+                        {% include '::start.html.twig' %}
+                    {% else %}
+                        {% include '::logged.html.twig' %}
+                    {% endif %}
+                {% else %}
+                    {% include '::round_finished.html.twig' %}
+                {% endif %}
+            </div>
+
+
+            {% include '::global_stats.html.twig' %}
+            {% if account is defined %}
+                {% include '::user_stats.html.twig' %}
+            {% endif %}
+        {% endblock %}
+        {% block body %}{% endblock %}
+    </div>
+    {% block javascripts %}{% endblock %}
+</div>
+</body>
+</html>

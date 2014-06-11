@@ -1,0 +1,27 @@
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     symfony
+    database_user:     root
+    database_password: ~
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~
+
+    locale:            en
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    currency_short: btc
+    currency: bitcoin
+    rpc_user: ~
+    rpc_password: ~
+    rpc_host: ~
+    rpc_port: ~
+    blockchain_tx_link: ~
+    wallet_account_prefix: ponzi
+    admin_user: admin
+    admin_password: ~
+    admin_ip: ~

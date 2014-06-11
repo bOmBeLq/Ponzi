@@ -1,0 +1,126 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+    {% include 'AppBundle:Default:changes.html.twig' %}
+
+    <div class="info" id="rules">
+        <h2>How does it work</h2>
+
+        When You send {{ currency_short|upper }} to our address Your deposit is used to pay {{ round.payoutPercent }}% for
+        someone
+        who sent coins before You.
+        When more poeople after You deposit {{ currency_short|upper }} You actually get paid {{ round.payoutPercent }}% using
+        their
+        deposits.
+    </div>
+
+    <div class="info">
+        <h2>{{ round.lastPayoutPercent }}% bonus</h2>
+
+        If noone sends any deposits after Your deposit for more than 48 hours
+        <span class="cool">You will get back {{ round.lastPayoutPercent }}%</span>
+        of Your deposit.<br>
+        <span class="cool">Bonus will not be paid fully if there is not enough funds in the wallet balance.</span>
+        <br>
+    </div>
+
+    <div class="info">
+        <h2>Referral system</h2>
+        After You submit Your withdrawal address in addition to deposit address and referral link will be generated.<br>
+        Send it to Your friends for maximizing Your profit.<br>
+        You will receive 1% of each payout received by Your referrers.<br>
+        Referral earnings will be paid only if You will make at least one deposit.
+        I would not make the "at least one deposit" limitation but if I would not do this then everyone would create
+        one empty account for referral, second account as referrer of the first and then
+        deposit {{ currency_short|upper }} on
+        the second account for
+        cumulative payout of {{ round.payoutPercent }}% + {{ round.referrerPayoutPercent }}%. <br>
+        This would kill the whole concept of referral system
+        because no one (or much less people) would register as someones referrer.
+    </div>
+
+
+    <div class="info">
+        <h2>Round end and risk</h2>
+        <span class="cool">Participating in any ponzi carries a risk that your investment may not be returned.
+            <br>
+            Invest only what you are prepared to lose!</span>
+        <br>
+        If noone deposists {{ currency_short|upper }} for more than 48 hours then the round will be finished.
+        Please note that this is the "game" part because if You are at the dark end and You are not the last person to
+        deposit You will not receive back Your investement. That said didn't You already make good profit
+        when the round was still alive? :) <br>If not then I'm sorry for You but this is game.
+    </div>
+    <div class="info">
+        <h2>Wrong amount of deposit</h2>
+
+        Please do not send less than {{ round.minDeposit|currency(true) }} {{ currency_short|upper }} or more
+        than {{ round.maxDeposit|currency(true) }} {{ currency_short|upper }} until You want to donate.<Br>
+        Any deposits less than {{ round.minDeposit|currency(true) }} {{ currency_short|upper }} and higher
+        than {{ round.maxDeposit|currency(true) }} {{ currency_short|upper }} <span
+                class="cool">will be treated as donations</span>.<br>
+        Please also note that if You send more than {{ round.maxDeposit|currency(true) }} {{ currency_short|upper }}
+        (eg. {{ (round.maxDeposit+(round.maxDeposit/2))|currency(true) }} {{ currency_short|upper }}).
+        Only {{ (round.maxDeposit/2)|currency(true) }} {{ currency_short|upper }} will be treated as donation
+        and the {{ round.maxDeposit|currency(true) }} {{ currency_short|upper }} will be in game.
+    </div>
+    <div class="info">
+        <h2>The deposit address</h2>
+        If You want to change the deposit address just click the "change address" button. And submit different return
+        address.
+        <br>
+        If You lost your deposit address just re-submit your return address and old deposit address will appear.
+        <br>
+        You can not change deposit address once generated for the return address.
+    </div>
+    <div class="info">
+        <h2>What do I get for that?</h2>
+
+        My fees are {{ round.payoutFeePercent }}% from each outgoing transaction
+        (this is not subtracted from Your {{ round.payoutPercent }}%). <br>
+        If You send {{ round.minDeposit|currency(true) }} {{ currency_short|upper }} You will still get back
+        full {{ ((round.minDeposit*round.payoutPercent)/100)|currency(true) }} {{ currency_short|upper }}.
+    </div>
+    <div class="info">
+        <h2>Negative balance in stats box (rare)</h2>
+        Sometimes there may be shown an negative balance in stats box (not a big amount). This is not a bug but a feature! :)<br>
+        It may happen because of 2 things:
+        <ul>
+            <li>Payout <span class="cool">tx</span> fees are not included when calculating if payout can be realised</li>
+            <li>My fees are not included when calculating <span class="cool">last</span> payouts (after round is finished)</li>
+        </ul>
+        Although they are not included before realising the payout they are subtracted from balance after the payout is realised.<br>
+        That is why wallet balance can sometimes jump into negative amount
+        so You have probably already realised that this works on contributors favor.<br>
+        The wallet balance shown on page is virtual. It is not real balance of the bitcoin wallet. <br>
+        I am doing this because I am not paying out my fees right after they are calculated but after the round is finished.<br>
+        The real wallet balance is in fact balance_on_page+my_fees and this makes it possible to use my fees to temporary cover tx fees.
+        <br>
+        Everything is transparent and You can always check if everything is right by calculating everything out.
+    </div>
+    <div class="info">
+        <h2>How to play</h2>
+
+        Submit your return address at the top of this page.
+        Then You should be given an deposit address. <br>
+        Send {{ currency_short|upper }} (min {{ round.minDeposit|currency(true) }} {{ currency_short|upper }}
+        max {{ round.maxDeposit|currency(true) }} {{ currency_short|upper }}) to given address and wait. <br>
+        After some time if another investors send their {{ currency_short|upper }} You will get paid
+        back {{ round.payoutPercent }}
+        %.
+        <br>
+        You can check investment progress on the
+        <a href="{{ path('stats', {round: round.id}) }}">
+            transactions history
+        </a>
+        page. <br>
+        You can invest many times but please note that it is not recommended to send any more deposits before You get
+        paid back because You will be paying for yourself which makes no sense.
+
+    </div>
+
+    <div class="info">
+        <h2>Good luck! :)</h2>
+    </div>
+
+{% endblock %}

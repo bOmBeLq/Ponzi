@@ -1,0 +1,47 @@
+<div class="info your-deposits">
+    <h2>Your stats</h2>
+
+    <span>
+        <span class="first">Deposits</span>
+        <span class="cool">
+            {{ account.totalDeposit | currency }} {{ currency_short|upper }} ({{ account.totalDepositCount }})
+        </span>
+    </span>
+    <span>
+        <span class="first">Pending deposits</span>
+        <span class="cool">
+          {{ account.totalPendingDeposit | currency }} {{ currency_short|upper }}
+            ({{ account.totalPendingDepositCount }})
+        </span>
+    </span>
+    <span>
+        <span class="first">Payouts</span>
+        <span class="cool">
+            {{ account.totalPayout | currency }} {{ currency_short|upper }} ({{ account.totalPayoutCount }})
+        </span>
+    </span>
+
+    <span>
+        <span class="first">Referral registers</span>
+        <span class="cool">
+            {{ account.referralRegistersCount }}
+        </span>
+    </span>
+
+    <span>
+        <span class="first">Referral earnings paid out</span>
+        <span class="cool">
+            {{ account.totalReferralPayout }} {{ currency_short|upper }} ({{ account.totalReferralPayoutCount }}
+            )
+        </span>
+    </span>
+     <span>
+        <span class="first">Referral earnings unpaid</span>
+        <span class="cool">
+            {{ account.totalUnpaidReferralEarnings }} {{ currency_short|upper }}
+            ({{ account.totalUnpaidReferralEarningsCount }})
+
+        </span>
+
+    </span>
+</div>

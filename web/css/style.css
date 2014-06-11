@@ -1,0 +1,331 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px
+}
+
+body {
+    background: url('img/bg2.jpg');
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+}
+div#logo-container {
+    min-height: 600px;
+}
+div.center {
+    position: relative;
+    width: 900px;
+    margin: 0 auto;
+    background-color: #353535;
+    color: #fff;
+    min-height: 100%;
+    padding: 5px 30px;
+    /*border: 10px #c1c1c1 solid;*/
+    box-shadow: 0 0 15px #b0be1f;
+}
+
+h1, h1 a {
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
+    font-weight: normal;
+    color: #F1DA36;
+    text-shadow: 0px 0px 9px #000;
+    margin: 5px 0 10px 0;
+    text-decoration: none;
+}
+
+
+h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.cool, a {
+    color: #DB9F13;
+    font-size: 16px;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+div.center2 {
+    text-align: center;
+    width: 100%;
+}
+
+span.tip1, span.tip2, span.tip3 {
+    box-shadow: 0px 0px 9px #000;
+    border-radius: 10px;
+    margin: 10px 20px;
+    display: inline-block;
+    padding: 6px 10px;
+    color: #000;
+    font-size: 18px;
+    font-weight: bold;
+    background: #ffae3d; /* Old browsers */
+    background: -moz-linear-gradient(top, #ffae3d 0%, #db9f13 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffae3d), color-stop(100%, #db9f13)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #ffae3d 0%, #db9f13 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #ffae3d 0%, #db9f13 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #ffae3d 0%, #db9f13 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #ffae3d 0%, #db9f13 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffae3d', endColorstr='#db9f13', GradientType=0); /* IE6-9 */
+}
+
+span.tip3 {
+    text-shadow: 0px 0px 14px #e7ec00;
+    font-size: 24px;
+}
+
+.arrow {
+    height: 40px;
+    vertical-align: middle;
+}
+
+div.info {
+    background-color: #494444;
+    box-shadow: 0px 0px 9px #cf8600;
+    padding: 15px 20px;
+    margin: 30px auto;
+    line-height: 18px;
+}
+
+div.info h2 {
+    color: #DB9F13;
+    margin: 0 0 5px 0;
+    line-height: normal;
+}
+
+div.half1, div.half2 {
+    display: inline-block;
+    vertical-align: top;
+    min-height: 154px;
+    margin: 30px 0 0 0;
+    position: relative;
+}
+aside {
+    position: absolute;
+    top: 10px
+}
+aside#links {
+    right: 10px;
+}
+#links img {
+    height: 36px;
+    margin-left: 5px;
+}
+aside#contact {
+    left: 10px;
+}
+.aside {
+    top: 10px;
+    right: 10px;
+    position: absolute;
+}
+div.half1 span.star {
+
+}
+div.half1 {
+    width: 332px;
+    padding-right: 5px !important;
+}
+
+div.half2 {
+    width: 478px;
+    margin-left: 20px;
+
+}
+
+div.half2 > span {
+    width: 32%;
+    margin-right: 3px;
+    display: inline-block;
+}
+div.half2 > span span {
+    width: 100%;
+    display: block;{{ currency }}
+
+}
+div.half2 .cool {
+    font-size: 14px;
+}
+input, button {
+    box-shadow: 0px 0px 9px #000;
+    margin: 10px;
+    border: 1px black solid;
+    background-color: #ffd594;
+    padding: 4px 5px;
+    color: #000;
+    font-size: 14px;
+
+}
+
+input[type=text],input[type=number],input[type=password], select, textarea {
+    width: 160px;
+    box-shadow: none;
+    background-color: #000;
+    color: #fff;
+}
+
+select {
+    width: auto;
+    border: none;
+    height: 26px;
+    margin-left: 10px;
+}
+
+input[type=text]:focus {
+    box-shadow: 0px 0px 9px #d37b00;
+}
+
+input[type=submit], button {
+    background: #ffae3d; /* Old browsers */
+    background: -moz-linear-gradient(top, #ffae3d 0%, #db9f13 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffae3d), color-stop(100%, #db9f13)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #ffae3d 0%, #db9f13 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #ffae3d 0%, #db9f13 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #ffae3d 0%, #db9f13 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #ffae3d 0%, #db9f13 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffae3d', endColorstr='#db9f13', GradientType=0); /* IE6-9 */
+    border-radius: 3px;
+    padding: 3px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0
+}
+
+label {
+    font-size: 16px;
+    color: #efd511;
+}
+
+input[type=submit]:hover, button:hover {
+    border: 1px #ff7000 solid;
+    text-decoration: underline;
+}
+
+a.see-all {
+    width: 200px;
+    margin: 20px auto 0 auto;
+    display: block;
+}
+
+table {
+    width: 100%;
+    background-color: #494444;
+    box-shadow: 0px 0px 9px #cf8600;
+    margin: 30px auto;
+    line-height: 18px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table th {
+    color: #DB9F13;
+    font-size: 16px;
+    box-shadow: 0px 0px 5px #cf8600;
+}
+
+table td {
+    height: 24px;
+    box-shadow: 0px 0px 1px #cf8600;
+
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+td.details {
+    text-align: left;
+    padding: 5px 5px 0 5px;
+}
+
+td.details div {
+    padding: 0 0 5px 0
+}
+
+
+table td, table th {
+
+    text-align: center;
+}
+
+table button {
+    font-size: 14px;
+}
+
+div.error {
+    padding: 3px 10px;
+    background: #a01900;
+    box-shadow: 0px 0px 9px #cf8600;
+    margin: 0 0 10px 79px;
+    width: auto;
+    display: inline-block;
+}
+input#address {
+    font-size: 11px
+}
+
+div.logged label {
+    width: 130px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 2px;
+}
+div.logged span {
+    display: block;
+    vertical-align: top;
+    margin-top: 3px;
+}
+div.logged a.earnings-payout {
+    display: inline-block;
+    margin: 1px 0 0 10px
+}
+div.logged input, textarea {
+    vertical-align: top;
+    margin-top: 0;
+    margin-left: 5px;
+    font-size: 11px;
+}
+
+div.your-deposits > span {
+    width: 32%;
+    display: inline-block;
+    vertical-align: top;
+    min-height: 42px
+}
+div.your-deposits > span span {
+    display: block;
+}
+
+div.your-deposits > span span a.earnings-payout {
+    margin-left: 5px;
+    font-weight: bold;
+}
+.gray {
+    color: #857f81;
+}
+.admin_form {
+    margin-top: 20px;
+}
+.admin_form label {
+    display: inline-block;
+    width: 35%;
+}
+.admin_form div.form_row {
+    height: 34px
+}
+.admin_form input, .admin_form select {
+    margin: 0;
+    vertical-align: top;
+}
+
+ul.form_errors, ul.form_errors li {
+    display: inline-block;
+    vertical-align: top;
+    margin: 2px 10px;
+    padding: 0
+}

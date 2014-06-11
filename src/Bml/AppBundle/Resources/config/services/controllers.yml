@@ -1,0 +1,22 @@
+services:
+  bml.abstract_controller:
+    abstract: true
+    calls:
+      - [setContainer, [@service_container]]
+
+  bml.default.controller:
+    parent: bml.abstract_controller
+    class: Bml\AppBundle\Controller\DefaultController
+    arguments:
+      - @bml_coin.manager.container
+      - @doctrine.orm.entity_manager
+      - @bml.round.repo
+      - @bml.payout.repo
+      - @bml.account.repo
+      - %wallet_account_prefix%
+
+
+  bml.admin.controller:
+    parent: bml.abstract_controller
+    class: Bml\AppBundle\Controller\AdminController
+    arguments: [@bml_coin.manager.container, @bml.round.repo, @doctrine.orm.entity_manager, @bml.round.manager]

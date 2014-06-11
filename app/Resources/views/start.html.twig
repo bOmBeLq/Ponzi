@@ -1,0 +1,19 @@
+<h2>Start</h2>
+Submit your return address (where <span class="cool">{{ round.payoutPercent }}
+    %</span> profit should be sent)
+<form method="post" action="{{ path('register', {round: round.id}) }}">
+    <label for="address">Address:</label>
+    <input id="address" type="text" placeholder="Address" name="address"/>
+
+    <input type="submit" value="Start"/>
+    {% for flashMessage in app.session.flashbag.get('error') %}
+        <div class="error">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+</form>
+<span class="star">
+    * Please read carefully
+    <a href="{{ path('index') }}#rules">rules</a>
+    before You start
+</span>

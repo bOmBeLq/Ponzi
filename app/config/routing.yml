@@ -1,0 +1,4 @@
+bml_app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+    prefix:   /

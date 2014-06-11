@@ -1,0 +1,51 @@
+<div class="info half2">
+    <h2>Stats (round {{ round.id }})</h2>
+
+    <span>
+        <span class="first">Deposits</span>
+        <span class="cool">{{ stats.totalDeposit | currency }} {{ currency_short|upper }}
+            ({{ stats.totalDepositCount }})</span>
+    </span>
+    <span>
+        <span class="first">Payouts</span>
+        <span class="cool">{{ stats.totalPayout | currency }} {{ currency_short|upper }}
+            ({{ stats.totalPayoutCount }})</span>
+    </span>
+    <span>
+        <span class="first">Fees</span>
+        <span class="cool">{{ stats.totalFees | currency }} {{ currency_short|upper }}</span>
+    </span>
+    <span>
+        <span class="first">Pending deposits</span>
+        <span class="cool">{{ stats.totalPendingDeposit | currency }} {{ currency_short|upper }}
+            ({{ stats.totalPendingDepositCount }})</span>
+    </span>
+    <span>
+        <span class="first">Referral payouts</span>
+        <span class="cool">{{ stats.totalReferralPayout | currency }} {{ currency_short|upper }}
+            ({{ stats.totalReferralPayoutCount }})</span>
+    </span>
+     <span>
+        <span class="first">Tx fees</span>
+        <span class="cool">{{ stats.totalTxFees | currency }} {{ currency_short|upper }}</span>
+    </span>
+    <span>
+        <span class="first">Last deposit</span>
+        <span class="cool">{{ stats.lastDeposit | timeAgo }} ago</span>
+    </span>
+   <span>
+        <span class="first">Last payout</span>
+        <span class="cool">{{ stats.lastPayout | timeAgo }} ago</span>
+    </span>
+
+
+    <span>
+        <span class="first">Wallet balance</span>
+        <span class="cool">{{ stats.balance | currency }} {{ currency_short|upper }}</span>
+    </span>
+    {% if page != 'stats' %}
+        <a href="{{ path('stats', {round: round.id}) }}" class="aside">
+            view transaction details
+        </a>
+    {% endif %}
+</div>

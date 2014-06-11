@@ -1,0 +1,30 @@
+services:
+  bml.repository_factory:
+    abstract: true
+    factory_service: doctrine.orm.entity_manager
+    factory_method: getRepository
+
+  bml.stats.repo:
+    parent: bml.repository_factory
+    class: Bml\AppBundle\Entity\StatsRepository
+    arguments: [AppBundle:Stats]
+
+  bml.account.repo:
+    parent: bml.repository_factory
+    class: Bml\AppBundle\Entity\AccountRepository
+    arguments: [AppBundle:Account]
+
+  bml.deposit.repo:
+      parent: bml.repository_factory
+      class: Bml\AppBundle\Entity\DepositRepository
+      arguments: [AppBundle:Deposit]
+
+  bml.round.repo:
+      parent: bml.repository_factory
+      class: Bml\AppBundle\Entity\RoundRepository
+      arguments: [AppBundle:Round]
+
+  bml.payout.repo:
+      parent: bml.repository_factory
+      class: Bml\AppBundle\Entity\PayoutRepository
+      arguments: [AppBundle:Payout]

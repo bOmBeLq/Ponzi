@@ -1,0 +1,79 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>time</th>
+            <th>deposit</th>
+            <th>deposit tx</th>
+            <th>confirmations</th>
+            <th>status</th>
+            <th>payout</th>
+            <th>payout tx tx</th>
+            {% if page != 'deposit-details' %}
+                <th>details</th>
+            {% endif %}
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td>{{ deposit.id }}</td>
+            <td>{{ deposit.receivedTime | timeAgo }} ago</td>
+            <td>{{ deposit.amount | currency }}</td>
+            <td><a href="{{ blockchain_tx_link }}{{ deposit.txIn }}">{{ deposit.txIn | shortize }}</a></td>
+            <td>{{ deposit.confirmations }}/{{ round.minConfirmations }}</td>
+            <td>
+                {{ ('status_'~deposit.status) | trans }}
+            </td>
+            <td>
+                {{ deposit.payout.amount | currency }}
+            </td>
+            <td>
+                {% if deposit.payout.tx %}
+                    <a href="{{ blockchain_tx_link }}{{ deposit.payout.tx.txOut }}">{{ deposit.payout.tx.txOut | shortize }}</a>
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+            {% if page != 'deposit-details' %}
+                <td style="font-size: 20px">
+                    <a href="#" id="show_details_{{ deposit.id }}" class="show-details" data-id="{{ deposit.id }}">
+                        &or;&or;&or;
+                    </a>
+                    <a style="display: none" href="#" id="hide_details_{{ deposit.id }}" class="hide-details"
+                       data-id="{{ deposit.id }}">
+                        &and;&and;&and;
+                    </a>
+                    <a href="{{ path('deposit-details', {id: deposit.id, round: round.id}) }}"
+                       data-id="{{ deposit.id }}">
+                        &raquo;&raquo;&raquo;
+                    </a>
+                </td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td {% if page != 'deposit-details' %}style="display: none" colspan="9" {% else %}colspan="8"{% endif %}
+                class="details" id="details_{{ deposit.id }}">
+                <div>
+                    <span class="cool">Deposit address:</span> {{ deposit.account.depositAddress }}
+                </div>
+                <div>
+                    <span class="cool">Payout address:</span> {{ deposit.account.withdrawAddress }}
+                </div>
+                <div>
+                    <span class="cool">Referred:</span> {{ deposit.account.referrer ? 'Yes' : 'No' }}
+                </div>
+                {% if deposit.referrerPayout %}
+                    <div>
+                        <span class="cool">Earned by referrer:</span> {{ deposit.referrerPayout.amount }} {{ currency_short | upper }}
+                    </div>
+                {% endif %}
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+{% endblock %}

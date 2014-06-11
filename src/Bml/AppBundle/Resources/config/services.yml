@@ -1,0 +1,6 @@
+imports:
+  - {resource: services/controllers.yml}
+  - {resource: services/repositories.yml}
+  - {resource: services/managers.yml}
+  - {resource: services/listeners.yml}
+  - {resource: services/twig_extensions.yml}

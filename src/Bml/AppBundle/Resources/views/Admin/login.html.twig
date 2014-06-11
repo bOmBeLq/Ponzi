@@ -1,0 +1,14 @@
+{% extends '::base_admin.html.twig' %}
+{% block body %}
+    <div class="info">
+        <h2>Admin login</h2>
+
+        <form method="post" action="{{ path('admin_login') }}" class="admin_form">
+            {{ form_widget(form) }}
+            <div class="form_row">
+                <label></label>
+                <input type="submit" value="Login" />
+            </div>
+        </form>
+    </div>
+{% endblock %}
