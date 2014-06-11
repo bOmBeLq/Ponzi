@@ -5,6 +5,10 @@ I take no responsibility for any money loss caused by this script.
 If You want to run this script but it does not work You can submit an issue ticket.
 I may help u but remember that You need some technical knowledge to run this.
 
+If You liked it and want to donate some satoshi:
+
+BTC address: 19VMMFXX2vTiAZZabc6GfENBw7zLjJzG1Y
+
 1) Installation
 ----------------------------------
 - setup mysql DB
