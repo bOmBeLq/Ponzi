@@ -2,6 +2,8 @@ Ponzi script
 ========================
 Sorry for poor documentation but in the beginning I didn't expect to publish this script.
 
+Screenshoot: https://raw.githubusercontent.com/bOmBeLq/Ponzi/master/screenshot.png
+
 I take no responsibility for any money loss caused by this script.
 
 If You want to run this script but it does not work You can submit an issue ticket.
