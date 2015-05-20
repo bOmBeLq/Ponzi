@@ -6,8 +6,9 @@ Screenshoot: https://raw.githubusercontent.com/bOmBeLq/Ponzi/master/screenshot.p
 
 I take no responsibility for any money loss caused by this script.
 
-If You want to run this script but it does not work You can submit an issue ticket.
-I may help u but remember that You need some technical knowledge to run this.
+I do not run this script anymore and I'm basicly out of the BTC business for some time but if You want to run this script and it does not work You can submit an issue ticket.
+I may try to help u but remember that You need some technical knowledge to run this.
+If You see any problem and You can fix it feel free to submit a pull request. Any help will be appreciated.
 
 Before running this please make sure that everything works as expected!
 Especially check if payouts done at round end are done right way because this was newest feature.
